@@ -2,21 +2,22 @@ const express = require('express')
 const app = express()
 const port = 8080
 
-const bodyParser = require('body-parser');
 const { User } = require("./models/User");
 
 app.use(express.urlencoded({extended: true}));
 
 app.use(express.json());
 
+const config = require('./config/key');
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb+srv://kangsoonyong1234:1234@kangsoonyong1.5b7i9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',)
+
+mongoose.connect(config.mongoURI,)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err))
 
 app.get('/', (req, res) => {
-  res.send('Hello World! ~!1111!!!!안녕하세용가리')
+  res.send('Hello World!')
 })
 
 app.post('/register', (req, res) => {
@@ -33,8 +34,6 @@ app.post('/register', (req, res) => {
     })
   })
 })
-
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
