@@ -20,6 +20,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+// 회원가입 post 메소드
 app.post('/register', (req, res) => {
 
   // 회원 가입 할 때 필요한 정보들을 client에서 가져오면
